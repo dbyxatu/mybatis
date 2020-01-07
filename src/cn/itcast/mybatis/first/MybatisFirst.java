@@ -12,23 +12,18 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import cn.itcast.mybatis.po.User;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
- * <p>
- * Title: MybatisFirst
- * </p>
- * <p>
- * Description: 入门程序
- * </p>
- * <p>
- * Company: www.itcast.com
- * </p>
- * 
- * @author 传智.燕青
- * @date 2015-4-22上午10:28:44
- * @version 1.0
+ * @ClassName: MybatisFirst
+ * @Description: 入门程序
+ *
+ * @version: v1.0.0
+ * @author dongby1
+ * @date 2020/01/07 09:13:50
  */
+@Slf4j
 public class MybatisFirst {
 
 	// 根据id查询用户信息，得到一条记录结果
@@ -41,8 +36,7 @@ public class MybatisFirst {
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 
 		// 创建会话工厂，传入mybatis的配置文件信息
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
-				.build(inputStream);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
 		// 通过工厂得到SqlSession
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -70,13 +64,12 @@ public class MybatisFirst {
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 
 		// 创建会话工厂，传入mybatis的配置文件信息
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
-				.build(inputStream);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
 		// 通过工厂得到SqlSession
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		// list中的user和映射文件中resultType所指定的类型一致
-		List<User> list = sqlSession.selectOne("test.findUserByName", "小明");
+		List<User> list = sqlSession.selectList("test.findUserByName", "小明");
 		System.out.println(list);
 		sqlSession.close();
 
@@ -91,8 +84,7 @@ public class MybatisFirst {
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 
 		// 创建会话工厂，传入mybatis的配置文件信息
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
-				.build(inputStream);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
 		// 通过工厂得到SqlSession
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -103,13 +95,20 @@ public class MybatisFirst {
 		user.setSex("1");
 		user.setAddress("河南郑州");
 
-		sqlSession.insert("test.insertUser", user);
+		int insertResult = sqlSession.insert("test.insertUser", user);
 
-		// 提交事务
-		sqlSession.commit();
+		
+		if (insertResult == 1) {
+			
+			log.info("新增用户: {}成功", user.getUsername());
+			
+			// 提交事务-这里是手动提交
+			sqlSession.commit();
 
-		// 获取用户信息主键
-		System.out.println(user.getId());
+			// 获取用户信息主键
+			log.info("当前新增用户的ID是: {}", user.getId());
+		}
+
 		// 关闭会话
 		sqlSession.close();
 
@@ -124,8 +123,7 @@ public class MybatisFirst {
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 
 		// 创建会话工厂，传入mybatis的配置文件信息
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
-				.build(inputStream);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
 		// 通过工厂得到SqlSession
 		SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -150,15 +148,14 @@ public class MybatisFirst {
 		InputStream inputStream = Resources.getResourceAsStream(resource);
 
 		// 创建会话工厂，传入mybatis的配置文件信息
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
-				.build(inputStream);
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 
 		// 通过工厂得到SqlSession
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		// 更新用户信息
-		
+
 		User user = new User();
-		//必须设置id
+		// 必须设置id
 		user.setId(41);
 		user.setUsername("王大军");
 		user.setBirthday(new Date());
@@ -166,7 +163,7 @@ public class MybatisFirst {
 		user.setAddress("河南郑州");
 
 		sqlSession.update("test.updateUser", user);
-		
+
 		// 提交事务
 		sqlSession.commit();
 

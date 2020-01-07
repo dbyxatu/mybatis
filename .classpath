@@ -14,7 +14,11 @@
 	<classpathentry kind="lib" path="lib/log4j-core-2.0-rc1.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.5.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.7.5.jar"/>
-	<classpathentry kind="lib" path="lib/mybatis-3.2.7.jar" sourcepath="F:/教学/mybatis/jar包/mybatis-3.2.7-source.zip"/>
+	<classpathentry kind="lib" path="lib/mybatis-3.2.7.jar" sourcepath="F:/Spring学习资料/第5阶段/传智播客_Springmvc+Mybatis由浅入深全套视频教程video/mybatis/mybatis资料/mybatis/day01/res/jar包/mybatis-3.2.7-source.zip">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="lib/junit-4.9.jar"/>
 	<classpathentry kind="lib" path="lib/lombok-1.18.8.jar"/>
 	<classpathentry kind="lib" path="lib/mybatis_plus.jar"/>

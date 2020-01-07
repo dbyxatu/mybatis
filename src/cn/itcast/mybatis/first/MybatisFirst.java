@@ -26,7 +26,21 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MybatisFirst {
 
-	// 根据id查询用户信息，得到一条记录结果
+	/**
+	 * 
+	 * @Function:findUserByIdTest
+	 * @Description: 根据id查询用户信息，得到一条记录结果
+	 *
+	 * @param:描述1描述
+	 * @return：返回结果描述
+	 * @throws：异常描述
+	 *
+	 * @version: v1.0.0
+	 * @author: dongby1
+	 * @date: 2020年1月7日 下午2:50:42
+	 *
+	 *        查询操作不需要提交事务
+	 */
 	@Test
 	public void findUserByIdTest() throws IOException {
 
@@ -55,7 +69,20 @@ public class MybatisFirst {
 
 	}
 
-	// 根据用户名称模糊查询用户列表
+	/**
+	 * 
+	 * @Function: findUserByNameTest
+	 * @Description: 根据用户名称模糊查询用户列表
+	 *
+	 * @param:描述1描述
+	 * @return：返回结果描述
+	 * @throws：异常描述
+	 *
+	 * @version: v1.0.0
+	 * @author: dongby1
+	 * @date: 2020年1月7日 下午2:49:57
+	 *
+	 */
 	@Test
 	public void findUserByNameTest() throws IOException {
 		// mybatis配置文件
@@ -75,7 +102,20 @@ public class MybatisFirst {
 
 	}
 
-	// 添加用户信息
+	/**
+	 * 
+	 * @Function: insertUserTest
+	 * @Description: 添加用户信息
+	 *
+	 * @param:描述1描述
+	 * @return：返回结果描述
+	 * @throws：异常描述
+	 *
+	 * @version: v1.0.0
+	 * @author: dongby1
+	 * @date: 2020年1月7日 下午2:51:28
+	 *
+	 */
 	@Test
 	public void insertUserTest() throws IOException {
 		// mybatis配置文件
@@ -97,11 +137,10 @@ public class MybatisFirst {
 
 		int insertResult = sqlSession.insert("test.insertUser", user);
 
-		
 		if (insertResult == 1) {
-			
+
 			log.info("新增用户: {}成功", user.getUsername());
-			
+
 			// 提交事务-这里是手动提交
 			sqlSession.commit();
 
@@ -114,7 +153,20 @@ public class MybatisFirst {
 
 	}
 
-	// 根据id删除 用户信息
+	/**
+	 * 
+	 * @Function: deleteUserTest
+	 * @Description: 根据id删除 用户信息
+	 *
+	 * @param:描述1描述
+	 * @return：返回结果描述
+	 * @throws：异常描述
+	 *
+	 * @version: v1.0.0
+	 * @author: dongby1
+	 * @date: 2020年1月7日 下午2:56:33
+	 *
+	 */
 	@Test
 	public void deleteUserTest() throws IOException {
 		// mybatis配置文件
@@ -139,7 +191,20 @@ public class MybatisFirst {
 
 	}
 
-	// 更新用户信息
+	/**
+	 * 
+	 * @Function: updateUserTest
+	 * @Description: 更新用户信息
+	 *
+	 * @param:描述1描述
+	 * @return：返回结果描述
+	 * @throws：异常描述
+	 *
+	 * @version: v1.0.0
+	 * @author: dongby1
+	 * @date: 2020年1月7日 下午2:56:48
+	 *
+	 */
 	@Test
 	public void updateUserTest() throws IOException {
 		// mybatis配置文件
@@ -156,7 +221,7 @@ public class MybatisFirst {
 
 		User user = new User();
 		// 必须设置id
-		user.setId(41);
+		// user.setId(41);
 		user.setUsername("王大军");
 		user.setBirthday(new Date());
 		user.setSex("2");

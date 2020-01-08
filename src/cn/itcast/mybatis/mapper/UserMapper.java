@@ -2,6 +2,8 @@ package cn.itcast.mybatis.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import cn.itcast.mybatis.po.User;
 import cn.itcast.mybatis.po.UserCustom;
 import cn.itcast.mybatis.po.UserQueryVo;
@@ -30,7 +32,7 @@ public interface UserMapper {
 	public User findUserByIdResultMap(int id) throws Exception;
 
 	// 根据用户名列查询用户列表
-	public List<User> findUserByName(String name) throws Exception;
+	public List<User> findUserByName(@Param(value = "name") String name) throws Exception;
 
 	// 插入用户
 	public void insertUser(User user) throws Exception;

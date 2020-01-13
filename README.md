@@ -15,4 +15,9 @@
 	
 2020-01-12    
 	1.完成day-02:04高级映射-一对一查询-使用resultType;  
-	2.完成day-02:05高级映射-一对一查询-使用resultMap;
+	2.完成day-02:05高级映射-一对一查询-使用resultMap;  
+	
+2020-01-13      
+	1.完成day-02:06高级映射-一对多查询-使用resultType:一对多映射-映射的pojo中不仅包含其他的pojo,  
+	还包含其他pojo的List/collection：对关联查询到多条记录映射到集合对象中 -ofType;   
+	2.完成day-02:07高级映射-多对多查询-使用resultMap:List套List再套pojo;  

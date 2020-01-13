@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
+import cn.itcast.mybatis.po.Orderdetail;
 import cn.itcast.mybatis.po.Orders;
 import cn.itcast.mybatis.po.OrdersCustom;
 import cn.itcast.mybatis.po.User;
@@ -57,7 +58,7 @@ public class OrdersMapperCustomTest {
 	/**
 	 * 
 	 * @Function: testFindOrdersUser
-	 * @Description: 该函数的功能描述
+	 * @Description: 一对一映射-使用resultType
 	 *
 	 * @param:描述1描述
 	 * @return：返回结果描述
@@ -86,7 +87,7 @@ public class OrdersMapperCustomTest {
 	/**
 	 * 
 	 * @Function: testFindOrdersUserResultMap
-	 * @Description: 该函数的功能描述
+	 * @Description: 一对一映射-使用resultMap-映射的pojo中包含其他pojo/association：用于映射关联查询单个对象的信息-javaType
 	 *
 	 * @param:描述1描述
 	 * @return：返回结果描述
@@ -117,6 +118,20 @@ public class OrdersMapperCustomTest {
 		sqlSession.close();
 	}
 
+	/**
+	 * 
+	* @Function: testFindOrdersAndOrderDetailResultMap
+	* @Description: 一对多映射-映射的pojo中不仅包含其他的pojo，还包含其他pojo的List/collection：对关联查询到多条记录映射到集合对象中 -ofType
+	*
+	* @param:描述1描述
+	* @return：返回结果描述
+	* @throws：异常描述
+	*
+	* @version: v1.0.0
+	* @author: dongby1
+	* @date: 2020年1月13日 下午2:30:22 
+	*
+	 */
 	@Test
 	public void testFindOrdersAndOrderDetailResultMap() throws Exception {
 
@@ -126,12 +141,33 @@ public class OrdersMapperCustomTest {
 
 		// 调用maper的方法
 		List<Orders> list = ordersMapperCustom.findOrdersAndOrderDetailResultMap();
+		
+//		for(Orders orders : list) {
+//			for(Orderdetail od : orders.getOrderdetails()) {
+//				System.out.println("-----------------------------------------------"+od.getId() + od.getItemsId() + od.getItemsNum() + od.getItems().toString());
+//			}
+//		}
 
 		System.out.println(list);
 
 		sqlSession.close();
 	}
 
+	
+	/**
+	 * 
+	* @Function: testFindUserAndItemsResultMap
+	* @Description: 多对多查询-List套List再套pojo
+	*
+	* @param:描述1描述
+	* @return：返回结果描述
+	* @throws：异常描述
+	*
+	* @version: v1.0.0
+	* @author: dongby1
+	* @date: 2020年1月13日 下午2:39:20 
+	*
+	 */
 	@Test
 	public void testFindUserAndItemsResultMap() throws Exception {
 

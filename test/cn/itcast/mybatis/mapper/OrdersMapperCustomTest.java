@@ -107,9 +107,9 @@ public class OrdersMapperCustomTest {
 
 		// 调用maper的方法
 		List<Orders> list = ordersMapperCustom.findOrdersUserResultMap();
-		
-		//遍历list
-		for(Orders orders : list) {
+
+		// 遍历list
+		for (Orders orders : list) {
 			System.out.println(orders.getUserId());
 		}
 
@@ -120,17 +120,18 @@ public class OrdersMapperCustomTest {
 
 	/**
 	 * 
-	* @Function: testFindOrdersAndOrderDetailResultMap
-	* @Description: 一对多映射-映射的pojo中不仅包含其他的pojo，还包含其他pojo的List/collection：对关联查询到多条记录映射到集合对象中 -ofType
-	*
-	* @param:描述1描述
-	* @return：返回结果描述
-	* @throws：异常描述
-	*
-	* @version: v1.0.0
-	* @author: dongby1
-	* @date: 2020年1月13日 下午2:30:22 
-	*
+	 * @Function: testFindOrdersAndOrderDetailResultMap
+	 * @Description: 一对多映射-映射的pojo中不仅包含其他的pojo，还包含其他pojo的List/collection：对关联查询到多条记录映射到集合对象中
+	 *               -ofType
+	 *
+	 * @param:描述1描述
+	 * @return：返回结果描述
+	 * @throws：异常描述
+	 *
+	 * @version: v1.0.0
+	 * @author: dongby1
+	 * @date: 2020年1月13日 下午2:30:22
+	 *
 	 */
 	@Test
 	public void testFindOrdersAndOrderDetailResultMap() throws Exception {
@@ -141,32 +142,32 @@ public class OrdersMapperCustomTest {
 
 		// 调用maper的方法
 		List<Orders> list = ordersMapperCustom.findOrdersAndOrderDetailResultMap();
-		
-//		for(Orders orders : list) {
-//			for(Orderdetail od : orders.getOrderdetails()) {
-//				System.out.println("-----------------------------------------------"+od.getId() + od.getItemsId() + od.getItemsNum() + od.getItems().toString());
-//			}
-//		}
+
+		// for(Orders orders : list) {
+		// for(Orderdetail od : orders.getOrderdetails()) {
+		// System.out.println("-----------------------------------------------"+od.getId()
+		// + od.getItemsId() + od.getItemsNum() + od.getItems().toString());
+		// }
+		// }
 
 		System.out.println(list);
 
 		sqlSession.close();
 	}
 
-	
 	/**
 	 * 
-	* @Function: testFindUserAndItemsResultMap
-	* @Description: 多对多查询-List套List再套pojo
-	*
-	* @param:描述1描述
-	* @return：返回结果描述
-	* @throws：异常描述
-	*
-	* @version: v1.0.0
-	* @author: dongby1
-	* @date: 2020年1月13日 下午2:39:20 
-	*
+	 * @Function: testFindUserAndItemsResultMap
+	 * @Description: 多对多查询-List套List再套pojo
+	 *
+	 * @param:描述1描述
+	 * @return：返回结果描述
+	 * @throws：异常描述
+	 *
+	 * @version: v1.0.0
+	 * @author: dongby1
+	 * @date: 2020年1月13日 下午2:39:20
+	 *
 	 */
 	@Test
 	public void testFindUserAndItemsResultMap() throws Exception {
@@ -183,7 +184,21 @@ public class OrdersMapperCustomTest {
 		sqlSession.close();
 	}
 
-	// 查询订单关联查询用户，用户信息使用延迟加载
+	/**
+	 * 
+	 * @Function: testFindOrdersUserLazyLoading
+	 * @Description: 查询订单关联查询用户，用户信息使用延迟加载
+	 * 先去执行findOrdersUserLazyLoading，当需要去查询用户的时候再去执行findUserById，通过resultMap的定义将延迟加载执行配置起来。
+	 *
+	 * @param:描述1描述
+	 * @return：返回结果描述
+	 * @throws：异常描述
+	 *
+	 * @version: v1.0.0
+	 * @author: dongby1
+	 * @date: 2020年1月14日 上午9:43:35
+	 *
+	 */
 	@Test
 	public void testFindOrdersUserLazyLoading() throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();// 创建代理对象
@@ -200,7 +215,21 @@ public class OrdersMapperCustomTest {
 
 	}
 
-	// 一级缓存测试
+	
+	/**
+	 * 
+	* @Function: testCache1
+	* @Description: 一级缓存测试
+	*
+	* @param:描述1描述
+	* @return：返回结果描述
+	* @throws：异常描述
+	*
+	* @version: v1.0.0
+	* @author: dongby1
+	* @date: 2020年1月14日 下午2:51:46 
+	*
+	 */
 	@Test
 	public void testCache1() throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();// 创建代理对象
@@ -227,7 +256,21 @@ public class OrdersMapperCustomTest {
 
 	}
 
-	// 二级缓存测试
+
+	/**
+	 * 
+	* @Function: testCache2
+	* @Description: 二级缓存测试
+	*
+	* @param:描述1描述
+	* @return：返回结果描述
+	* @throws：异常描述
+	*
+	* @version: v1.0.0
+	* @author: dongby1
+	* @date: 2020年1月14日 下午2:51:58 
+	*
+	 */
 	@Test
 	public void testCache2() throws Exception {
 		SqlSession sqlSession1 = sqlSessionFactory.openSession();

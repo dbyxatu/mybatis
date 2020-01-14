@@ -21,3 +21,7 @@
 	1.完成day-02:06高级映射-一对多查询-使用resultType:一对多映射-映射的pojo中不仅包含其他的pojo,  
 	还包含其他pojo的List/collection：对关联查询到多条记录映射到集合对象中 -ofType;   
 	2.完成day-02:07高级映射-多对多查询-使用resultMap:List套List再套pojo;  
+	
+2020-01-14      
+	1.完成day-02:延迟加载;  
+	2.完成day-02:查询缓存:一级缓存、二级缓存;  

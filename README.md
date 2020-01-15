@@ -25,3 +25,6 @@
 2020-01-14      
 	1.完成day-02:延迟加载;  
 	2.完成day-02:查询缓存:一级缓存、二级缓存;  
+	
+2020-01-15  
+	转至https://github.com/dbyxatu/spring_mybatis.git  
